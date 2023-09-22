@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Finland Largest Animals</title>
+        <style>
+            #app {
+                border: dashed black 1px;
+                box-sizing: border-box;
+                padding: 10px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            #app > div {
+                flex-basis: 400px;
+                margin: 35px;
+            }
+            img {
+                width: 100%;
+            }
+            button {
+                margin: 15px;
+                padding: 4px 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Finland Largest Animals</h1>
+        <p>Counting remaining exemplar of Finland "kings".</p>
+        <div id="app">
+            <div id="bears">
+                <img src="eurasian-brown-bear.jpg" width="600" height="350">
+                <button v-on:click="addAnimal($event,1)">+1</button>
+                <button v-on:click="addAnimal($event,5)">+5</button>
+                <button v-on:click="addAnimal($event,-1)">-1</button>
+            </div>
+            <div id="elks">
+                <img src="Moose.jpg" width="600" height="350">
+                <button v-on:click="addAnimal($event,1)">+1</button>
+                <button v-on:click="addAnimal($event,5)">+5</button>
+                <button v-on:click="addAnimal($event,-1)">-1</button>
+            </div>
+            <div id="codalbs">
+                <img src="white_tailed_eagle.jpg" width="600" height="350">
+                <button v-on:click="addAnimal($event, 1)">+1</button>
+                <button v-on:click="addAnimal($event, 5)">+5</button>
+                <button v-on:click="addAnimal($event, -1)">-1</button>
+            </div>
+            <ul>
+                <li>Eurasian Bears: {{ bears }}</li>
+                <li>Elks: {{ elks }}</li>
+                <li>White Tailed Eagles: {{ codalbs }}</li>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        bears: 0,
+                        elks: 0,
+                        codalbs: 0
+                    }
+                },
+                methods: {
+                    addAnimal(e, number) {
+                        if(e.target.parentElement.id==="bears"){
+                            this.bears+=number;
+                        }
+                        else if(e.target.parentElement.id==="elks"){
+                            this.elks+=number;
+                        }
+                        else {
+                            this.codalbs += number;
+                        }
+                    }
+                }
+            })
+            app.mount('#app')
+        </script>
+    </body>
+</html>
